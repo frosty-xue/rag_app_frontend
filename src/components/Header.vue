@@ -50,6 +50,7 @@
         <el-button
             type="primary"
             @click="router.push({ path: '/knowledgeBase'})"
+            v-if="isAdmin"
         >
           {{'管理知识库'}}
         </el-button>
@@ -86,6 +87,8 @@ import { ElMessageBox } from "element-plus";
 const router = useRouter();
 const activeIndex = ref<string>(router.currentRoute.value.path);
 const searchQuery = ref<string>("");
+
+const isAdmin = sessionStorage.getItem('role') === 'Administrator'
 
 /**
  * 处理菜单选择
